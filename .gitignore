@@ -1,0 +1,4 @@
+.*
+/vendor
+/test_data.json
+!.gitignore
