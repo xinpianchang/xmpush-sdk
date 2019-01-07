@@ -12,27 +12,27 @@ import (
 
 var (
 	/*
-	测试参数, 需要自行建立配置文件 test_data.json
-	配置范例
+		测试参数, 需要自行建立配置文件 test_data.json
+		配置范例
 
-		{
-		  "appSecret": "appSecret",
-		  "packageName": [
-			"com.server.example"
-		  ],
-		  "regId": [
-			"regid_1"
-		  ],
-		  "alias": [
-			"alias_1"
-		  ],
-		  "account": [
-			"account_1"
-		  ],
-		  "topic": [
-			"topic_1"
-		  ]
-		}
+			{
+			  "appSecret": "appSecret",
+			  "packageName": [
+				"com.server.example"
+			  ],
+			  "regId": [
+				"regid_1"
+			  ],
+			  "alias": [
+				"alias_1"
+			  ],
+			  "account": [
+				"account_1"
+			  ],
+			  "topic": [
+				"topic_1"
+			  ]
+			}
 
 	*/
 	appSecret   string
@@ -286,7 +286,7 @@ func TestClient_GetMessageStatusByJobKey(t *testing.T) {
 }
 
 func TestClient_GetMessageStatusByRange(t *testing.T) {
-	start := (time.Now().UnixNano() - int64(time.Hour * 1)) / int64(time.Millisecond)
+	start := (time.Now().UnixNano() - int64(time.Hour*1)) / int64(time.Millisecond)
 	end := time.Now().UnixNano() / int64(time.Millisecond)
 
 	result, err := client.GetMessageStatusByRange(start, end)

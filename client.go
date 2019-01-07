@@ -46,14 +46,14 @@ const (
 	multiAliasURL   = "/v2/multi_messages/aliases"
 	multiAccountURL = "/v2/multi_messages/user_accounts"
 
-	statsURL = "/v1/stats/message/counters"
-	messageStatusURL = "/v1/trace/message/status"
+	statsURL          = "/v1/stats/message/counters"
+	messageStatusURL  = "/v1/trace/message/status"
 	messagesStatusURL = "/v1/trace/messages/status"
 
-	subscribeURL = "/v2/topic/subscribe"
+	subscribeURL   = "/v2/topic/subscribe"
 	unsubscribeURL = "/v2/topic/unsubscribe"
 
-	subscribeAliasURL = "/v2/topic/subscribe/alias"
+	subscribeAliasURL   = "/v2/topic/subscribe/alias"
 	unsubscribeAliasURL = "/v2/topic/unsubscribe/alias"
 
 	invalidRegIdsURL = "https://feedback.xmpush.xiaomi.com/v1/feedback/fetch_invalid_regids"
@@ -61,19 +61,19 @@ const (
 	regIdAliasURL = "/v1/alias/all"
 	regIdTopicURL = "/v1/topic/all"
 
-	scheduleJobExistURL = "/v2/schedule_job/exist"
+	scheduleJobExistURL  = "/v2/schedule_job/exist"
 	scheduleJobDeleteURL = "/v2/schedule_job/delete"
 )
 
 // 创建客户端
 func NewClient(appSecret string, packageNames ...string) (*Client, error) {
-	if appSecret  == "" || packageNames ==  nil || len(packageNames) == 0 {
+	if appSecret == "" || packageNames == nil || len(packageNames) == 0 {
 		return nil, errors.New("error params")
 	}
 	return &Client{
-		useSandbox:   false,
-		appSecret:    appSecret,
-		packageNames: packageNames,
+		useSandbox:          false,
+		appSecret:           appSecret,
+		packageNames:        packageNames,
 		hasMultiPackageName: len(packageNames) > 1,
 		client: &http.Client{
 			Timeout: 20 * time.Second,
@@ -83,12 +83,12 @@ func NewClient(appSecret string, packageNames ...string) (*Client, error) {
 }
 
 type Client struct {
-	useSandbox   bool
-	appSecret    string
-	packageNames []string
+	useSandbox          bool
+	appSecret           string
+	packageNames        []string
 	hasMultiPackageName bool
-	client       *http.Client
-	log          logger
+	client              *http.Client
+	log                 logger
 }
 
 func (c *Client) UseSandbox(use bool) {
